@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 33% 97%;
+    --foreground: 30 8% 23%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 8% 23%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 8% 23%;
+    --primary: 347 56% 80%;
+    --primary-foreground: 30 8% 23%;
+    --secondary: 30 33% 97%;
+    --secondary-foreground: 30 8% 23%;
+    --muted: 347 30% 90%;
+    --muted-foreground: 30 8% 40%;
+    --accent: 42 47% 54%;
+    --accent-foreground: 30 33% 97%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 347 30% 85%;
+    --input: 347 30% 90%;
+    --ring: 42 47% 54%;
+    --radius: 0.625rem;
+    
+    /* Custom color vars */
+    --blush: #f2c4ce;
+    --cream: #faf7f5;
+    --gold: #c9a84c;
+    --dusty-rose: #d4889a;
+    --champagne: #f7e7ce;
+    --deep-mauve: #7d3c52;
+    --charcoal: #1a1a1a;
+    --hot-pink: #d63384;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(180deg, #f2c4ce 0%, #faf7f5 15%, #faf7f5 100%);
+    color: #3d3837;
+    cursor: none;
+    overflow-x: hidden;
+  }
+
+  /* Hide cursor on mobile */
+  @media (max-width: 768px) {
+    body {
+      cursor: auto;
+    }
+  }
+
+  ::selection {
+    background: rgba(242, 196, 206, 0.4);
+    color: #3d3837;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 24px;
+  }
+
+  /* Gold gradient border */
+  .gold-border {
+    position: relative;
+  }
+  .gold-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Terminal 3D text effect */
+  .terminal-3d {
+    color: #d63384;
+    text-shadow: 
+      -1px -1px 0 rgba(214, 51, 132, 0.4),
+      -2px -2px 0 rgba(214, 51, 132, 0.35),
+      -3px -3px 0 rgba(214, 51, 132, 0.3),
+      -4px -4px 0 rgba(214, 51, 132, 0.25),
+      -5px -5px 0 rgba(214, 51, 132, 0.2),
+      -6px -6px 0 rgba(214, 51, 132, 0.15),
+      -7px -7px 0 rgba(214, 51, 132, 0.1),
+      -8px -8px 0 rgba(214, 51, 132, 0.05),
+      -1px -2px 0 #c9a84c, 
+      -2px -3px 0 #c9a84c, 
+      -3px -4px 0 #c9a84c, 
+      -4px -5px 0 #c9a84c, 
+      -5px -6px 0 #c9a84c,
+      2px 2px 0 rgba(0,0,0,0.2);
+    font-family: 'JetBrains Mono', monospace;
+    transform: rotateY(25deg) rotateX(10deg) scale(1.2);
+    transform-style: preserve-3d;
+    display: inline-block;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 40%, rgba(201, 168, 76, 0.5) 50%, transparent 60%);
+    background-size: 200% 200%;
+    animation: shimmer 3s infinite linear;
+    pointer-events: none;
+  }
+
+  /* Dot grid background */
+  .dot-grid {
+    background-image: radial-gradient(#d4889a 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
